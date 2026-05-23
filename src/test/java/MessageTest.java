@@ -17,7 +17,7 @@ public class MessageTest {
     private Message message1;
     private Message message2;
  
-    // ─── @Before: fresh objects created before EVERY single test ─────────────
+    // ─── @BeforeEach: fresh objects created before EVERY single test ─────────────
     @BeforeEach
     public void setUp() {
         // Message 1 — POE test data (valid recipient)
@@ -72,9 +72,7 @@ public class MessageTest {
         assertEquals("Message exceeds 250 characters by 1, please reduce size.", result);
     }
  
-    // =========================================================================
     // RECIPIENT CELL NUMBER TESTS
-    // =========================================================================
  
     @Test
     public void testCheckRecipientCell_validNumber_returnsSuccess() {
@@ -99,17 +97,10 @@ public class MessageTest {
         );
     }
  
-    // =========================================================================
     // MESSAGE HASH TESTS
-    // =========================================================================
  
     @Test
     public void testCreateMessageHash_correctFormat_endsWithExpectedWords() {
-        // ARRANGE
-        // message1 text: "Hi Mike, can you join us for dinner tonight?"
-        // First word stripped: HI
-        // Last word stripped : TONIGHT
-        // messageNumber = 1 so hash must end with :1:HITONIGHT
  
         // ACT
         String hash = message1.createMessageHash();
@@ -151,9 +142,7 @@ public class MessageTest {
         }
     }
  
-    // =========================================================================
     // MESSAGE ID TESTS
-    // =========================================================================
  
     @Test
     public void testCheckMessageID_generatedID_isNotNull() {
@@ -171,16 +160,9 @@ public class MessageTest {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
  
-    // =========================================================================
     // SENT MESSAGE TESTS
     // Uses TestableMessage inner class — no console/Scanner needed
-    // =========================================================================
- 
-    /**
-     * Inner helper class that overrides sentMessage() to use a fixed choice
-     * instead of reading from the console.
-     * This is the pattern recommended in the Part 2 Unit Tests Guide.
-     */
+    
     private static class TestableMessage extends Message {
         private final int simulatedChoice;
  

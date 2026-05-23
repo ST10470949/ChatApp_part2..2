@@ -69,12 +69,12 @@ public class Message {
         return messageHash;
     }
 
-    // Removes non-alphabetic characters from a word
+    
     private String stripPunctuation(String word) {
         return word.replaceAll("[^a-zA-Z]", "");
     }
 
-   
+   //Send messages
     public String sentMessage(int choice) {
         switch (choice) {
             case 1:  return "Message successfully sent.";
@@ -84,7 +84,7 @@ public class Message {
         }
     }
 
-    // ─── Getters and Setters ──────────────────────────────────────────────────
+   
     public String getMessageId()     { return messageId;     }
     public int    getMessageNumber() { return messageNumber; }
     public String getRecipient()     { return recipient;     }
